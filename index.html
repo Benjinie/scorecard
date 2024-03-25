@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsible Tech Assessment</title>
   <style>
+    body {font-family: arial;}
+    
     table {
       border-collapse: collapse;
       width: 100%;
     }
+    #score {font-size: 20px;font-weight: bold;}
     th, td {
       padding: 10px;
       cursor: pointer;
@@ -29,13 +32,11 @@
 </head>
 <body>
 
-  <h2>Responsible Tech Assessment</h2>
-
   <table>
     <thead>
       <tr>
-        <th>Responsible Tech Principle</th>
-        <th>Irresponsible Tech Practices</th>
+        <th align='left'>Responsible Tech Principle</th>
+        <th align='left'>Irresponsible Tech Practices</th>
       </tr>
     </thead>
     <tbody>
@@ -44,31 +45,42 @@
         <td class="irresponsible" data-value="-1">Uncollaborative</td>
       </tr>
       <tr>
-        <td class="responsible" data-value="1">2. Equity and Fairness</td>
+        <td class="responsible" data-value="1">2. Inclusive, equitable and fair design</td>
         <td class="irresponsible" data-value="-1">Exclusionary Design</td>
       </tr>
       <tr>
-        <td class="responsible" data-value="1">3. Private & Secure</td>
-        <td class="irresponsible" data-value="-1">Data Exploitation & Lax Security</td>
+        <td class="responsible" data-value="1">3. Data quality and clarity</td>
+        <td class="irresponsible" data-value="-1">Inaccurate or misleading data</td>
       </tr>
       <tr>
-        <td class="responsible" data-value="1">4. Sustainable</td>
+        <td class="responsible" data-value="1">4. Protect user data</td>
+        <td class="irresponsible" data-value="-1">Lax Security, Data Exploitation</td>
+      </tr>
+      <tr>
+        <td class="responsible" data-value="1">5. Sustainable technology lifecycle</td>
         <td class="irresponsible" data-value="-1">Environmental Neglect</td>
       </tr>
       <tr>
-        <td class="responsible" data-value="1">5. Transparent & Explainable</td>
+        <td class="responsible" data-value="1">6. Accountable Development</td>
         <td class="irresponsible" data-value="-1">Unaccountable Development</td>
       </tr>
       <tr>
-        <td class="responsible" data-value="1">6. Ethical AI</td>
+        <td class="responsible" data-value="1">7. Accountable Development</td>
+        <td class="irresponsible" data-value="-1">Unaccountable Development</td>
+      </tr>
+      <tr>
+        <td class="responsible" data-value="1">8. Ethical AI</td>
         <td class="irresponsible" data-value="-1">Lack of Societal Impact Consideration</td>
       </tr>
+
+
+
     </tbody>
   </table>
 
   <br>
 
-  <div id="score">Your Score: 0 out of 7</div>
+  <div id="score">Your Score: 0 out of 8</div>
 
   <script>
     const tableCells = document.querySelectorAll('table tbody td');
@@ -87,18 +99,18 @@
         });
 
         // Update score, cell background color, and selection state based on click
-        if (clickedClass && currentScore <= 7) {
+        if (clickedClass && currentScore <= 8) {
           this.classList.add('selected');
-          scoreDisplay.textContent = `Your Score: ${currentScore + 1} out of 7`;
-        } else if (irresponsibleClass && currentScore >= -7) {
+          scoreDisplay.textContent = `Your Score: ${currentScore + 1} out of 8`;
+        } else if (irresponsibleClass && currentScore >= -8) {
           this.classList.add('selected');
-          scoreDisplay.textContent = `Your Score: ${currentScore - 1} out of 7`;
+          scoreDisplay.textContent = `Your Score: ${currentScore - 1} out of 8`;
         } else {
           this.classList.add('neutral'); // Indicate no selection for the row
         }
 
         // Update message based on final score
-        if (currentScore >= 7 || currentScore <= -7) {
+        if (currentScore >= 8 || currentScore <= -8) {
           scoreDisplay.textContent += " - You've reached the maximum score.";
         }
       });
