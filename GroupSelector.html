@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+    .dropdown {
+      margin-top: 1rem;
+    }
+    .hidden {
+      display: none;
+    }
+    input[type="text"] {
+      width: 300px;
+      padding: 8px;
+      margin-bottom: 5px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      max-height: 150px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border: 1px solid #ccc;
+      width: 300px;
+    }
+    li {
+      padding: 8px;
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: #f0f0f0;
+    }
+    .no-results {
+      padding: 8px;
+      color: #888;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Select a Group</h1>
+
+<label>
+  <input type="radio" name="groupType" value="custom" checked>
+  Custom Group
+</label>
+<label>
+  <input type="radio" name="groupType" value="admin">
+  Administrative Group
+</label>
+
+<div class="dropdown" id="customDropdown">
+  <input type="text" id="customSearch" placeholder="Search custom groups...">
+  <ul id="customList">
+    <li>Custom Group 1</li>
+    <li>Custom Group 2</li>
+    <li>Custom Group 3</li>
+  </ul>
+  <div id="customNoResults" class="no-results hidden">No results found.</div>
+</div>
+
+<div class="dropdown hidden" id="adminDropdown">
+  <input type="text" id="adminSearch" placeholder="Search administrative groups...">
+  <ul id="adminList">
+    <li>Western Cape (WC)</li>
+    <li>City of Cape Town (CPT)</li>
+    <li>West Coast (DC1)</li>
+    <li>Bergrivier (WC013)</li>
+    <li>Cederberg (WC012)</li>
+  </ul>
+  <div id="adminNoResults" class="no-results hidden">No results found.</div>
+</div>
+
+<script>
+const customDropdown = document.getElementById('customDropdown');
+const adminDropdown = document.getElementById('adminDropdown');
+const radios = document.querySelectorAll('input[name="groupType"]');
+
+radios.forEach(radio => {
+  radio.addEventListener('change', () => {
+    if (radio.value === 'custom') {
+      customDropdown.classList.remove('hidden');
+      adminDropdown.classList.add('hidden');
+    } else {
+      customDropdown.classList.add('hidden');
+      adminDropdown.classList.remove('hidden');
+    }
+  });
+});
+
+function filterList(searchInput, listElement, noResultsElement) {
+  const filter = searchInput.value.toLowerCase();
+  const items = listElement.getElementsByTagName('li');
+  let visibleCount = 0;
+  Array.from(items).forEach(item => {
+    if (item.textContent.toLowerCase().includes(filter)) {
+      item.style.display = '';
+      visibleCount++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+  if (visibleCount === 0) {
+    noResultsElement.classList.remove('hidden');
+  } else {
+    noResultsElement.classList.add('hidden');
+  }
+}
+
+document.getElementById('customSearch').addEventListener('input', function() {
+  filterList(this, document.getElementById('customList'), document.getElementById('customNoResults'));
+});
+
+document.getElementById('adminSearch').addEventListener('input', function() {
+  filterList(this, document.getElementById('adminList'), document.getElementById('adminNoResults'));
+});
+</script>
+
+</body>
+</html>
