@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapInsight Export - Point Details</title>
+    <link rel="stylesheet" href="mockup_export_style.css"> <!-- Adjusted link -->
+</head>
+<body>
+    <header>
+        <h1>MapInsight Export: Point Details</h1>
+        <p>Generated: <span id="generation-date">Date Placeholder</span></p>
+    </header>
+    <main>
+        <section id="custom-points">
+            <h2>Custom User Points</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Coordinates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Community Clinic Proposal</td>
+                        <td>Healthcare</td>
+                        <td>Proposed location for a new community health clinic based on resident feedback.</td>
+                        <td>-33.925, 18.424</td>
+                    </tr>
+                    <tr>
+                        <td>Park Upgrade Area</td>
+                        <td>Recreation</td>
+                        <td>Area identified for potential park upgrades, including new benches and playground equipment.</td>
+                        <td>-33.930, 18.430</td>
+                    </tr>
+                     <tr>
+                        <td>Reported Pothole</td>
+                        <td>Infrastructure</td>
+                        <td>Large pothole reported on Main St, requires urgent repair.</td>
+                        <td>-33.922, 18.420</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="dataset-points">
+            <h2>Dataset Points</h2>
+            <h3>Dataset: Health Facilities (Source: Dept. of Health GIS Portal, 2024-Q1)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Operator</th>
+                        <th>Services</th>
+                        <th>Coordinates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>HFAC-001</td>
+                        <td>Hospital</td>
+                        <td>Public</td>
+                        <td>Emergency, Maternity, General Surgery</td>
+                        <td>-33.918, 18.428</td>
+                    </tr>
+                    <tr>
+                        <td>HFAC-002</td>
+                        <td>Clinic</td>
+                        <td>Private</td>
+                        <td>General Practice, Dentistry</td>
+                        <td>-33.935, 18.419</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Dataset: Schools (Source: Dept. of Education Register, 2023)</h3>
+             <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Level</th>
+                        <th>Type</th>
+                        <th>Enrollment (2023)</th>
+                        <th>Coordinates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SCH-101</td>
+                        <td>Primary</td>
+                        <td>Public</td>
+                        <td>450</td>
+                        <td>-33.928, 18.435</td>
+                    </tr>
+                    <tr>
+                        <td>SCH-102</td>
+                        <td>Secondary</td>
+                        <td>Independent</td>
+                        <td>820</td>
+                        <td>-33.920, 18.415</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <nav>
+            <a href="mockup_export_map_view.html">Back to Map View</a> |
+            <a href="mockup_export_metadata.html">View Map Metadata</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; MapInsight - Confidential</p>
+    </footer>
+     <script>
+      try {
+        document.getElementById('generation-date').textContent = new Date().toLocaleDateString();
+      } catch (e) {
+        console.error("Could not set date:", e);
+      }
+    </script>
+</body>
+</html>

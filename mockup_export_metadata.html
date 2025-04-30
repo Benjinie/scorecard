@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapInsight Export - Map Metadata</title>
+    <link rel="stylesheet" href="mockup_export_style.css"> <!-- Adjusted link -->
+</head>
+<body>
+    <header>
+        <h1>MapInsight Export: Map Metadata</h1>
+        <p>Generated: <span id="generation-date">Date Placeholder</span></p>
+    </header>
+    <main>
+        <section id="map-details">
+            <h2>Map View Details</h2>
+            <div class="metadata-item">
+                <h3>Title</h3>
+                <p id="map-title">District 5 Service Delivery Analysis - Q2 2025</p>
+            </div>
+            <div class="metadata-item">
+                <h3>Description</h3>
+                <p id="map-description">This map view aggregates key service delivery points and resident-reported issues within District 5 to identify potential gaps and areas for improvement in healthcare access and public infrastructure maintenance.</p>
+            </div>
+            <div class="metadata-item">
+                <h3>Purpose</h3>
+                <p id="map-purpose">To provide a consolidated visual overview for the quarterly planning meeting, facilitating discussion on resource allocation and prioritizing interventions based on geographic distribution of needs and existing facilities.</p>
+            </div>
+            <div class="metadata-item">
+                <h3>Service Delivery Issue Addressed</h3>
+                <p id="map-issue">Equitable access to primary healthcare facilities and responsiveness to reported infrastructure problems (e.g., road maintenance).</p>
+            </div>
+        </section>
+
+        <section id="data-sources">
+            <h2>Data Sources Used</h2>
+            <ul id="data-source-list">
+                <li>Custom User Points (Field Reports - May 2025)</li>
+                <li>Health Facilities (Dept. of Health GIS Portal - Updated 2024-Q1)</li>
+                <li>Schools (Dept. of Education Register - Updated 2023)</li>
+                <li>Administrative Boundaries (Municipal GIS - 2022)</li>
+            </ul>
+        </section>
+
+        <section id="layers">
+            <h2>Map Layers Visible in Export</h2>
+            <ul id="layer-list">
+                 <li>Base Map: OpenStreetMap Standard</li>
+                 <li>Overlay: District 5 Boundary</li>
+                 <li>Overlay: Custom User Points</li>
+                 <li>Overlay: Health Facilities</li>
+                 <li>Overlay: Schools</li>
+            </ul>
+        </section>
+
+        <nav>
+            <a href="mockup_export_map_view.html">Back to Map View</a> |
+            <a href="mockup_export_point_details.html">View Point Details</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; MapInsight - Confidential</p>
+    </footer>
+     <script>
+      try {
+        document.getElementById('generation-date').textContent = new Date().toLocaleDateString();
+      } catch (e) {
+        console.error("Could not set date:", e);
+      }
+    </script>
+</body>
+</html>
