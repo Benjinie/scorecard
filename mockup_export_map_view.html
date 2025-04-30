@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapInsight Export - Map View</title>
+    <link rel="stylesheet" href="mockup_export_style.css"> <!-- Adjusted link -->
+</head>
+<body>
+    <header>
+        <h1>MapInsight Export: Map View</h1>
+        <p>Generated: <span id="generation-date">Date Placeholder</span></p> <!-- Placeholder text -->
+    </header>
+    <main>
+        <section class="map-container">
+            <h2>Map Visualization</h2>
+            <!-- Using a more relevant placeholder image -->
+            <img src="https://images.unsplash.com/photo-1582882559204-76d153053010?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Sample Map View with Points" class="map-image">
+            <div class="legend">
+                <h4>Legend</h4>
+                <ul>
+                    <li><span class="marker custom"></span> Custom User Point</li>
+                    <li><span class="marker dataset1"></span> Dataset: Health Facilities</li>
+                    <li><span class="marker dataset2"></span> Dataset: Schools</li>
+                </ul>
+            </div>
+        </section>
+        <nav>
+            <!-- Adjusted links to be relative if opened locally -->
+            <a href="mockup_export_point_details.html">View Point Details</a> |
+            <a href="mockup_export_metadata.html">View Map Metadata</a>
+        </nav>
+    </main>
+    <footer>
+        <p>&copy; MapInsight - Confidential</p>
+    </footer>
+    <!-- Basic script to add date, ensure it works when opened locally -->
+    <script>
+      try {
+        document.getElementById('generation-date').textContent = new Date().toLocaleDateString();
+      } catch (e) {
+        console.error("Could not set date:", e);
+      }
+    </script>
+</body>
+</html>

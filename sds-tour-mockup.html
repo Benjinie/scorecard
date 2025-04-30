@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoSight - Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic custom styles for civic clarity */
+        body { font-family: 'Inter', sans-serif; }
+        .prose h1, .prose h2, .prose h3 { font-weight: 600; }
+        .map-placeholder { background-color: #e0f2fe; border: 1px dashed #0ea5e9; display: flex; align-items: center; justify-content: center; color: #0369a1; font-style: italic; }
+        .chart-placeholder { background-color: #f0f9ff; border: 1px dashed #38bdf8; display: flex; align-items: center; justify-content: center; color: #075985; font-style: italic; }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <nav class="container mx-auto px-6 py-3">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-2xl font-bold text-sky-700">GeoSight</h1>
+                    <div>
+                        <!-- Future nav links here -->
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Data-Driven Decisions for Urban Planning</h2>
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    GeoSight empowers urban planners and policymakers to visualize spatial data, analyze demographics, and optimize service delivery for more equitable and effective communities.
+                </p>
+                <a href="tour-menu.html" class="inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-8 rounded-lg shadow transition duration-300">
+                    Explore Tutorials
+                </a>
+            </div>
+
+            <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-2 text-sky-800">Visualize Data</h3>
+                    <p class="text-gray-600">Interactive maps reveal spatial patterns and relationships critical for planning.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-2 text-sky-800">Analyze Demographics</h3>
+                    <p class="text-gray-600">Understand community needs with detailed demographic profiles and insights.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-2 text-sky-800">Optimize Services</h3>
+                    <p class="text-gray-600">Identify optimal locations for facilities and resources based on data.</p>
+                </div>
+            </div>
+             <div class="mt-16 text-center">
+                <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Urban planning dashboard mockup" class="rounded-lg shadow-lg mx-auto max-w-4xl w-full h-auto"/>
+                <p class="text-sm text-gray-500 mt-2">Illustrative Example: GeoSight Dashboard Interface</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 mt-12 py-6">
+            <div class="container mx-auto px-6 text-center text-sm">
+                &copy; <script>document.write(new Date().getFullYear())</script> GeoSight. All rights reserved. (Mockup Version)
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

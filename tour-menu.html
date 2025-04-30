@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoSight - Tour Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tour-card img { aspect-ratio: 16 / 9; object-fit: cover; }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <nav class="container mx-auto px-6 py-3">
+                <div class="flex justify-between items-center">
+                     <a href="index.html" class="text-2xl font-bold text-sky-700 hover:text-sky-800">GeoSight</a>
+                    <div>
+                         <a href="index.html" class="text-gray-600 hover:text-sky-700">Back to Home</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">GeoSight Tutorials</h2>
+            <p class="text-lg text-gray-600 mb-10">Learn how to leverage GeoSight's tools for effective urban planning and service delivery through these guided examples.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Tour Card 1 -->
+                <div class="tour-card bg-white rounded-lg shadow overflow-hidden transition hover:shadow-lg flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1598091145947-a000e3d64fec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Swimming pool" class="w-full h-48">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2 text-sky-800">Finding the Optimal Swimming Pool Location</h3>
+                        <p class="text-gray-600 mb-4 text-sm flex-grow">Analyze demographics, access, and existing facilities to identify the most equitable site for a new community pool.</p>
+                        <a href="tour-detail-pool.html" class="mt-auto inline-block bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded text-sm transition duration-300 w-fit">Start Tour</a>
+                    </div>
+                </div>
+
+                <!-- Tour Card 2 -->
+                 <div class="tour-card bg-white rounded-lg shadow overflow-hidden transition hover:shadow-lg flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1560439514-e960a3ef50d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="City demographics chart" class="w-full h-48">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2 text-sky-800">Demographic Analysis for Service Planning</h3>
+                        <p class="text-gray-600 mb-4 text-sm flex-grow">Explore population density, age distribution, and income levels to tailor services effectively to community needs.</p>
+                        <a href="tour-detail-demographics.html" class="mt-auto inline-block bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded text-sm transition duration-300 w-fit">Start Tour</a>
+                    </div>
+                </div>
+
+                <!-- Tour Card 3 (Placeholder) -->
+                <div class="tour-card bg-white rounded-lg shadow overflow-hidden opacity-70 flex flex-col">
+                     <img src="https://images.unsplash.com/photo-1517736996306-06e8c35e054f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Public transport map" class="w-full h-48">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2 text-sky-800">Transit Accessibility Assessment</h3>
+                        <p class="text-gray-600 mb-4 text-sm flex-grow">Evaluate how well public transport serves different neighborhoods and identify areas for improvement.</p>
+                        <span class="mt-auto inline-block bg-gray-400 text-white font-medium py-2 px-4 rounded text-sm cursor-not-allowed w-fit">Coming Soon</span>
+                    </div>
+                </div>
+
+                 <!-- Tour Card 4 (Placeholder) -->
+                <div class="tour-card bg-white rounded-lg shadow overflow-hidden opacity-70 flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1542601906-8e060c116956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Park with people" class="w-full h-48">
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2 text-sky-800">Greenspace Equity Mapping</h3>
+                        <p class="text-gray-600 mb-4 text-sm flex-grow">Analyze the distribution of parks and green spaces relative to population density and demographics.</p>
+                        <span class="mt-auto inline-block bg-gray-400 text-white font-medium py-2 px-4 rounded text-sm cursor-not-allowed w-fit">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 mt-12 py-6">
+            <div class="container mx-auto px-6 text-center text-sm">
+                &copy; <script>document.write(new Date().getFullYear())</script> GeoSight. All rights reserved. (Mockup Version)
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

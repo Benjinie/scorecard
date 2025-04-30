@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour: Demographic Analysis - GeoSight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose h1, .prose h2, .prose h3 { font-weight: 600; }
+        .map-placeholder { background-color: #e0f2fe; border: 1px dashed #0ea5e9; display: flex; align-items: center; justify-content: center; color: #0369a1; font-style: italic; min-height: 300px; }
+        .chart-placeholder { background-color: #f0f9ff; border: 1px dashed #38bdf8; display: flex; align-items: center; justify-content: center; color: #075985; font-style: italic; min-height: 250px; }
+        .step-content { display: none; }
+        .step-content.active { display: block; }
+        .prose { max-width: none; }
+        .prose p { margin-bottom: 1em; }
+        .prose h3 { margin-bottom: 0.8em; margin-top: 1.5em; font-size: 1.25rem; }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+     <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <nav class="container mx-auto px-6 py-3">
+                <div class="flex justify-between items-center">
+                    <a href="index.html" class="text-2xl font-bold text-sky-700 hover:text-sky-800">GeoSight</a>
+                    <div>
+                        <a href="tour-menu.html" class="text-gray-600 hover:text-sky-700 mr-4 text-sm sm:text-base">Back to Tour Menu</a>
+                         <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded text-sm disabled:opacity-50 cursor-not-allowed" disabled>Download Tour (PDF)</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+             <h2 class="text-3xl font-bold text-gray-900 mb-4">Tour: Demographic Analysis for Service Planning</h2>
+            <p class="text-lg text-gray-600 mb-8">Learn how to analyze population data to understand community needs and inform effective service delivery strategies.</p>
+
+              <!-- Progress Indicator -->
+            <div class="mb-8">
+                <div class="text-sm font-medium text-gray-500 mb-1" id="progress-text">Step 1 of 5</div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-sky-600 h-2.5 rounded-full" style="width: 20%"></div>
+                </div>
+            </div>
+
+             <!-- Tour Steps Container -->
+            <div id="tour-steps" class="bg-white p-6 sm:p-8 rounded-lg shadow prose">
+                <!-- Step 1 -->
+                <div id="step-1" class="step-content active">
+                    <h3>Step 1: Introduction - Understanding Your Community</h3>
+                    <p>Effective service planning starts with a deep understanding of the people you serve. Demographic analysis helps reveal the composition, distribution, and characteristics of the population.</p>
+                    <p>This tour will guide you through visualizing key demographic indicators within GeoSight.</p>
+                </div>
+                <!-- Step 2 -->
+                <div id="step-2" class="step-content">
+                    <h3>Step 2: Population Density & Distribution</h3>
+                    <p>Visualize where people live within your area. Use heatmap layers to quickly identify high-density and low-density neighborhoods.</p>
+                     <div class="map-placeholder my-6">Placeholder: Heatmap showing population density across the city/region.</div>
+                    <p>Understanding population distribution is crucial for resource allocation and identifying potential service demand hotspots.</p>
+                </div>
+                <!-- Step 3 -->
+                 <div id="step-3" class="step-content">
+                     <h3>Step 3: Age & Income Profiles</h3>
+                    <p>Explore the age structure and income levels of different areas. Use bar charts to compare age groups or pie charts to show income brackets within selected zones.</p>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                        <div class="chart-placeholder">Placeholder: Bar chart showing age distribution (e.g., 0-17, 18-64, 65+) for selected neighborhood.</div>
+                        <div class="chart-placeholder">Placeholder: Pie chart showing household income brackets for the same area.</div>
+                     </div>
+                    <p>This information helps tailor services like childcare, senior programs, or workforce development initiatives.</p>
+                </div>
+                <!-- Step 4 -->
+                <div id="step-4" class="step-content">
+                     <h3>Step 4: Identifying Key Trends</h3>
+                     <p>Analyze changes over time if historical data is available. Line charts can illustrate population growth, shifts in age structure, or changing income patterns.</p>
+                      <div class="chart-placeholder my-6">Placeholder: Line chart showing population growth trend over the last 10 years for different districts.</div>
+                    <p>Identifying trends allows for proactive planning and anticipating future service needs.</p>
+                </div>
+                 <!-- Step 5 -->
+                <div id="step-5" class="step-content">
+                     <h3>Step 5: Applying Insights - Targeting Services</h3>
+                     <p>Combine the demographic insights gained to make informed decisions. For example, identify areas with high numbers of young children and low incomes to prioritize early childhood education programs, or target senior services towards neighborhoods with aging populations.</p>
+                     <div class="map-placeholder my-6">Placeholder: Map highlighting areas identified for targeted outreach based on combined demographic factors (e.g., low income + high youth population).</div>
+                     <p>Using demographic analysis ensures that services are relevant, equitable, and efficiently allocated. You've completed this analysis tour!</p>
+                </div>
+            </div>
+
+             <!-- Navigation -->
+            <div class="mt-8 flex justify-between items-center">
+                 <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:opacity-50" disabled>
+                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+                    Previous
+                </button>
+                 <span id="step-indicator" class="text-sm font-medium text-gray-600 hidden sm:inline">Step 1 of 5</span>
+                 <button id="next-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                    Next
+                    <svg class="fill-current w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                </button>
+            </div>
+        </main>
+
+         <!-- Footer -->
+         <footer class="bg-gray-800 text-gray-300 mt-12 py-6">
+            <div class="container mx-auto px-6 text-center text-sm">
+                &copy; <script>document.write(new Date().getFullYear())</script> GeoSight. All rights reserved. (Mockup Version)
+            </div>
+        </footer>
+     </div>
+
+     <script>
+        // Simple JS for step navigation (same as pool tour)
+        const steps = document.querySelectorAll('.step-content');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const stepIndicator = document.getElementById('step-indicator');
+        const nextBtnText = nextBtn.childNodes[0]; // Get the text node 'Next'
+        const nextBtnSvg = nextBtn.querySelector('svg'); // Get the SVG arrow
+
+        let currentStep = 1;
+        const totalSteps = steps.length;
+
+        function updateStepView() {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index + 1 === currentStep);
+            });
+            prevBtn.disabled = currentStep === 1;
+            nextBtn.disabled = false; // Always enable next initially
+
+            if (currentStep === totalSteps) {
+                nextBtnText.textContent = 'Finish Tour';
+                 if (nextBtnSvg) nextBtnSvg.style.display = 'none'; // Hide SVG
+            } else {
+                nextBtnText.textContent = 'Next';
+                 if (nextBtnSvg) nextBtnSvg.style.display = 'inline'; // Show SVG
+            }
+
+            const progressPercentage = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            progressText.textContent = `Step ${currentStep} of ${totalSteps}`;
+            stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
+        }
+
+         nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepView();
+            } else {
+                 // alert('Tour Finished!'); // Uncomment for simple alert
+                 window.location.href = 'tour-menu.html'; // Go back to menu
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepView();
+            }
+        });
+
+        // Initial view setup
+        updateStepView();
+    </script>
+</body>
+</html>

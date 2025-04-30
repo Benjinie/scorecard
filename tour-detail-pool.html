@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour: Optimal Swimming Pool Location - GeoSight</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .prose h1, .prose h2, .prose h3 { font-weight: 600; }
+        .map-placeholder { background-color: #e0f2fe; border: 1px dashed #0ea5e9; display: flex; align-items: center; justify-content: center; color: #0369a1; font-style: italic; min-height: 300px; }
+        .chart-placeholder { background-color: #f0f9ff; border: 1px dashed #38bdf8; display: flex; align-items: center; justify-content: center; color: #075985; font-style: italic; min-height: 250px; }
+        .step-content { display: none; }
+        .step-content.active { display: block; }
+        .prose { max-width: none; } /* Allow prose to take full width */
+        .prose p { margin-bottom: 1em; }
+        .prose h3 { margin-bottom: 0.8em; margin-top: 1.5em; font-size: 1.25rem; /* Adjust heading size if needed */ }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-10">
+            <nav class="container mx-auto px-6 py-3">
+                <div class="flex justify-between items-center">
+                    <a href="index.html" class="text-2xl font-bold text-sky-700 hover:text-sky-800">GeoSight</a>
+                    <div>
+                        <a href="tour-menu.html" class="text-gray-600 hover:text-sky-700 mr-4 text-sm sm:text-base">Back to Tour Menu</a>
+                        <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded text-sm disabled:opacity-50 cursor-not-allowed" disabled>Download Tour (PDF)</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow container mx-auto px-6 py-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Tour: Finding the Optimal Swimming Pool Location</h2>
+            <p class="text-lg text-gray-600 mb-8">Follow these steps to identify the most equitable and suitable location for a new community swimming pool using GeoSight's tools.</p>
+
+             <!-- Progress Indicator -->
+            <div class="mb-8">
+                <div class="text-sm font-medium text-gray-500 mb-1" id="progress-text">Step 1 of 5</div>
+                <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-sky-600 h-2.5 rounded-full" style="width: 20%"></div>
+                </div>
+            </div>
+
+            <!-- Tour Steps Container -->
+            <div id="tour-steps" class="bg-white p-6 sm:p-8 rounded-lg shadow prose">
+                <!-- Step 1 -->
+                <div id="step-1" class="step-content active">
+                    <h3>Step 1: Introduction - Define the Goal</h3>
+                    <p>The objective is to locate a new public swimming pool to maximize accessibility and serve areas with the greatest need. We'll consider factors like population density, age demographics (especially children and youth), proximity to existing facilities, and transportation access.</p>
+                    <p>In this first step, we familiarize ourselves with the study area and the core problem we aim to solve.</p>
+                </div>
+                <!-- Step 2 -->
+                <div id="step-2" class="step-content">
+                    <h3>Step 2: Data Layers - Existing Facilities & Demographics</h3>
+                    <p>Visualize the locations of existing swimming pools and key demographic data. Add layers for population density and areas with a high concentration of families with children.</p>
+                     <div class="map-placeholder my-6">Placeholder: Map showing existing pools (red dots) and high child population density (shaded areas)</div>
+                    <p>This helps identify potential service gaps and areas where demand might be high.</p>
+                </div>
+                <!-- Step 3 -->
+                 <div id="step-3" class="step-content">
+                    <h3>Step 3: Analysis - Identifying Underserved Areas</h3>
+                    <p>Combine the data layers to identify neighborhoods that are far from existing pools and have high potential user density (e.g., many children, high overall population).</p>
+                    <div class="chart-placeholder my-6">Placeholder: Chart showing service gap analysis - population count vs. distance to nearest pool</div>
+                    <p>Focus on areas showing both high need and low current access.</p>
+                </div>
+                <!-- Step 4 -->
+                <div id="step-4" class="step-content">
+                    <h3>Step 4: Site Suitability - Zoning & Access</h3>
+                     <p>Within the identified underserved areas, examine potential sites based on zoning regulations (must allow recreational facilities), land availability, and accessibility via public transport and road networks.</p>
+                     <div class="map-placeholder my-6">Placeholder: Map highlighting potential suitable parcels (green polygons) within underserved zones, overlaid with transit routes (blue lines)</div>
+                     <p>Filter out locations that are impractical due to zoning or poor access.</p>
+                </div>
+                 <!-- Step 5 -->
+                <div id="step-5" class="step-content">
+                    <h3>Step 5: Recommendation - Top Candidate Locations</h3>
+                    <p>Based on the combined analysis of need, access, and site suitability, GeoSight identifies the top candidate locations for the new swimming pool.</p>
+                     <div class="map-placeholder my-6">Placeholder: Map showing top 3 recommended locations (numbered stars) with summary metrics for each (e.g., population served, access score).</div>
+                    <p>These recommendations provide data-backed options for policymakers to consider for further investigation and community consultation. Congratulations, you've completed the tour!</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mt-8 flex justify-between items-center">
+                <button id="prev-btn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:opacity-50" disabled>
+                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/></svg>
+                    Previous
+                </button>
+                 <span id="step-indicator" class="text-sm font-medium text-gray-600 hidden sm:inline">Step 1 of 5</span>
+                <button id="next-btn" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-4 rounded inline-flex items-center">
+                    Next
+                    <svg class="fill-current w-4 h-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"/></svg>
+                </button>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-gray-300 mt-12 py-6">
+            <div class="container mx-auto px-6 text-center text-sm">
+                &copy; <script>document.write(new Date().getFullYear())</script> GeoSight. All rights reserved. (Mockup Version)
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const steps = document.querySelectorAll('.step-content');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const stepIndicator = document.getElementById('step-indicator');
+        const nextBtnText = nextBtn.childNodes[0]; // Get the text node 'Next'
+        const nextBtnSvg = nextBtn.querySelector('svg'); // Get the SVG arrow
+
+        let currentStep = 1;
+        const totalSteps = steps.length;
+
+        function updateStepView() {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index + 1 === currentStep);
+            });
+            prevBtn.disabled = currentStep === 1;
+            nextBtn.disabled = false; // Always enable next initially
+
+            if (currentStep === totalSteps) {
+                nextBtnText.textContent = 'Finish Tour';
+                if (nextBtnSvg) nextBtnSvg.style.display = 'none'; // Hide SVG
+            } else {
+                nextBtnText.textContent = 'Next';
+                 if (nextBtnSvg) nextBtnSvg.style.display = 'inline'; // Show SVG
+            }
+
+            const progressPercentage = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            progressText.textContent = `Step ${currentStep} of ${totalSteps}`;
+             stepIndicator.textContent = `Step ${currentStep} of ${totalSteps}`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateStepView();
+            } else {
+                 // Optional: Action on finish, e.g., redirect or show summary
+                 // alert('Tour Finished!'); // Uncomment for simple alert
+                 window.location.href = 'tour-menu.html'; // Go back to menu
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 1) {
+                currentStep--;
+                updateStepView();
+            }
+        });
+
+        // Initial view setup
+        updateStepView();
+    </script>
+</body>
+</html>
