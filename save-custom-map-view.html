@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Custom Map View</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .modal {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .modal-header h2 svg {
+            margin-right: 8px;
+        }
+        
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #555;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #f00;
+        }
+        
+        .custom-points-section {
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .collapse-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #4285f4;
+            font-size: 14px;
+            padding: 0;
+        }
+        
+        .point-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .point-item.selected {
+            background-color: #e6f0ff;
+        }
+        
+        .checkbox-wrapper {
+            margin-right: 8px;
+        }
+        
+        .point-info {
+            flex-grow: 1;
+        }
+        
+        .example-text {
+            color: #777;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            padding: 16px 20px;
+            background-color: #f0f6ff;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-cancel {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+            margin-right: 8px;
+        }
+        
+        .btn-save {
+            background-color: #4285f4;
+            color: white;
+        }
+        
+        .share-section {
+            margin-top: 24px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="modal">
+        <div class="modal-header">
+            <h2>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                SAVE CUSTOM MAP VIEW
+            </h2>
+            <button class="close-button" id="closeBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="mapViewForm">
+                <div class="form-group">
+                    <label for="title" class="required-field">Custom Map View Title</label>
+                    <input type="text" id="title" name="title" placeholder="e.g. New Swimming Pool Site Option" required>
+                    <div id="titleHint" class="example-text"></div>
+                </div>
+                <div class="form-group">
+                    <label for="collection">Select Collection</label>
+                    <select id="collection" name="collection">
+                        <option value="" disabled selected>Select a collection</option>
+                        <option value="urban-data">Urban Distribution Data</option>
+                        <option value="environmental">Environmental Assessment</option>
+                        <option value="demographic">Demographic Analysis</option>
+                        <option value="infrastructure">Infrastructure Planning</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="example"></textarea>
+                </div>
+                
+                <div class="custom-points-section">
+                    <div class="section-header">
+                        <span>Custom Points</span>
+                        <button type="button" class="collapse-button" id="togglePoints">
+                            <span id="toggleText">collapse</span>
+                        </button>
+                    </div>
+                    <div class="example-text">Simulated Point Attributes: e.g. Location Size</div>
+                    
+                    <div id="pointsContainer">
+                        <div class="point-item">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="point1" name="points" value="point1" checked>
+                            </div>
+                            <div class="point-info">
+                                <label for="point1">Custom Point 1</label>
+                                <div class="example-text">+ summary</div>
+                            </div>
+                        </div>
+                        <div class="point-item">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="point2" name="points" value="point2" checked>
+                            </div>
+                            <div class="point-info">
+                                <label for="point2">Custom Point 2</label>
+                                <div class="example-text">+ summary</div>
+                            </div>
+                        </div>
+                        <div class="point-item">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="spatial" name="points" value="spatial" checked>
+                            </div>
+                            <div class="point-info">
+                                <label for="spatial">Spatial Datasets</label>
+                            </div>
+                        </div>
+                        <div class="point-item">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="indicators" name="points" value="indicators" checked>
+                            </div>
+                            <div class="point-info">
+                                <label for="indicators">Indicators</label>
+                                <div class="example-text">Indicator datasets</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="share-section">
+                    <div class="form-group">
+                        <label for="shareGroup">Share with Group</label>
+                        <select id="shareGroup" name="shareGroup">
+                            <option value="" selected>None</option>
+                            <option value="team1">Planning Team</option>
+                            <option value="team2">Development Team</option>
+                            <option value="team3">Research Team</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-cancel" id="cancelBtn">Cancel</button>
+            <button type="button" class="btn btn-save" id="saveBtn">Save</button>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">Custom Map View saved successfully!</div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle close button
+            document.getElementById('closeBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to close? Any unsaved changes will be lost.')) {
+                    // In a real app, this would close the modal
+                    alert('Modal closed');
+                }
+            });
+            
+            // Handle cancel button
+            document.getElementById('cancelBtn').addEventListener('click', function() {
+                if (confirm('Are you sure you want to cancel? Any unsaved changes will be lost.')) {
+                    // In a real app, this would close the modal
+                    alert('Operation canceled');
+                }
+            });
+            
+            // Handle save button
+            document.getElementById('saveBtn').addEventListener('click', function() {
+                const title = document.getElementById('title').value;
+                if (!title) {
+                    alert('Please enter a title for your custom map view.');
+                    document.getElementById('title').focus();
+                    return;
+                }
+                
+                // Get form data
+                const formData = {
+                    title: title,
+                    collection: document.getElementById('collection').value,
+                    description: document.getElementById('description').value,
+                    points: Array.from(document.querySelectorAll('input[name="points"]:checked')).map(cb => cb.value),
+                    shareGroup: document.getElementById('shareGroup').value
+                };
+                
+                // In a real app, this would send the data to a server
+                console.log('Saving custom map view:', formData);
+                
+                // Show success notification
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(function() {
+                    notification.style.display = 'none';
+                    // In a real app, this might redirect or close the modal
+                    alert('Map view saved as: ' + title);
+                }, 3000);
+            });
+            
+            // Handle collapse/expand for custom points
+            const toggleBtn = document.getElementById('togglePoints');
+            const pointsContainer = document.getElementById('pointsContainer');
+            const toggleText = document.getElementById('toggleText');
+            
+            toggleBtn.addEventListener('click', function() {
+                if (pointsContainer.style.display === 'none') {
+                    pointsContainer.style.display = 'block';
+                    toggleText.textContent = 'collapse';
+                } else {
+                    pointsContainer.style.display = 'none';
+                    toggleText.textContent = 'expand';
+                }
+            });
+            
+            // Handle point selection highlighting
+            const pointItems = document.querySelectorAll('.point-item');
+            pointItems.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                
+                // Set initial state
+                if (checkbox.checked) {
+                    item.classList.add('selected');
+                }
+                
+                // Handle changes
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        item.classList.add('selected');
+                    } else {
+                        item.classList.remove('selected');
+                    }
+                });
+            });
+            
+            // Auto-populate Urban Distribution Data if it's in the placeholder
+            const titleInput = document.getElementById('title');
+            titleInput.addEventListener('focus', function() {
+                const titleHint = document.getElementById('titleHint');
+                if (!this.value) {
+                    titleHint.textContent = 'Urban Distribution Data';
+                    setTimeout(() => {
+                        titleHint.textContent = '';
+                    }, 3000);
+                }
+            });
+        });
+        
+        // Function to create a downloadable HTML file
+        function downloadHTML() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'save-custom-map-view.html';
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 0);
+        }
+        
+        // Add download button
+        const downloadBtn = document.createElement('button');
+        downloadBtn.innerHTML = 'Download HTML';
+        downloadBtn.style.position = 'fixed';
+        downloadBtn.style.bottom = '20px';
+        downloadBtn.style.left = '20px';
+        downloadBtn.style.padding = '10px 15px';
+        downloadBtn.style.backgroundColor = '#4285f4';
+        downloadBtn.style.color = 'white';
+        downloadBtn.style.border = 'none';
+        downloadBtn.style.borderRadius = '4px';
+        downloadBtn.style.cursor = 'pointer';
+        downloadBtn.addEventListener('click', downloadHTML);
+        document.body.appendChild(downloadBtn);
+    </script>
+</body>
+</html>
