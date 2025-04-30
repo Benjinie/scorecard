@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map App Icons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 2rem;
+      display: grid;
+      gap: 2rem;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1.5rem;
+    }
+    .icon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    svg {
+      width: 20px;
+      height: 20px;
+      stroke: black;
+      stroke-width: 1.5;
+      stroke-linecap: square;
+      stroke-linejoin: miter;
+      fill: none;
+      margin-bottom: 0.5rem;
+    }
+    .label {
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Map Application Icons</h1>
+  <div class="icon-grid">
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M16 12v-2a4 4 0 00-8 0v2"/><rect x="8" y="12" width="8" height="8" rx="2"/></svg>
+      <div class="label">User Management</div>
+    </div>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <div class="label">Dataset Management</div>
+    </div>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M3 4v16h18V4zM8 4v16M16 4v16"/></svg>
+      <div class="label">Custom Map Views</div>
+    </div>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      <div class="label">Points</div>
+    </div>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M4 12h16M4 16h16M4 8h16"/></svg>
+      <div class="label">Access Thresholds</div>
+    </div>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M8 6v12"/><path d="M16 6v12"/></svg>
+      <div class="label">Municipal Services</div>
+    </div>
+  </div>
+</body>
+</html>
