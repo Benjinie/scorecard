@@ -44,7 +44,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Distance Calculator</h1>
+    <h1>Distance between Germiston Library and points of interest</h1>
     <form id="distanceForm">
       <label for="latitude">Your Latitude:</label>
       <input type="number" id="latitude" value="-26.229166666667" placeholder="Enter your latitude" required step="any">
@@ -168,7 +168,7 @@
 
     // Add a note below the results table
     const note = document.createElement('p');
-    note.textContent = "Note: Distances are calculated using the Vincenty formula, which provides high accuracy by accounting for the Earth's ellipsoidal shape. The points of interest represent the four corners of Ekurhuleni Metro.";
+    note.textContent = "The points of interest represent the four corners of Ekurhuleni Metro.<\br><\br>Note: Distances are calculated using the Vincenty formula, which provides high accuracy by accounting for the Earth's ellipsoidal shape. While the calculation assumes both points are at sea level, it remains relatively accurate for most practical purposes, even if the points are at higher elevations, as long as the elevation difference is not significant. The accuracy decreases slightly as the elevation difference increases, especially for short distances.";
     document.querySelector('.container').appendChild(note);
   </script>
 </body>
